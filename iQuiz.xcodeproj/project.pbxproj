@@ -14,6 +14,11 @@
 		3447DC20202FE12100D62D96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3447DC1E202FE12100D62D96 /* LaunchScreen.storyboard */; };
 		3447DC2B202FE12100D62D96 /* iQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC2A202FE12100D62D96 /* iQuizTests.swift */; };
 		3447DC36202FE12100D62D96 /* iQuizUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC35202FE12100D62D96 /* iQuizUITests.swift */; };
+		3447DC44202FE22E00D62D96 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC43202FE22E00D62D96 /* AppData.swift */; };
+		3447DC48202FE54200D62D96 /* Marvel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3447DC45202FE54100D62D96 /* Marvel.jpg */; };
+		3447DC49202FE54200D62D96 /* Math.png in Resources */ = {isa = PBXBuildFile; fileRef = 3447DC46202FE54100D62D96 /* Math.png */; };
+		3447DC4A202FE54200D62D96 /* Science.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3447DC47202FE54100D62D96 /* Science.jpg */; };
+		3447DC4C202FE5CD00D62D96 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC4B202FE5CD00D62D96 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		3447DC31202FE12100D62D96 /* iQuizUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iQuizUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3447DC35202FE12100D62D96 /* iQuizUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iQuizUITests.swift; sourceTree = "<group>"; };
 		3447DC37202FE12100D62D96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3447DC43202FE22E00D62D96 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		3447DC45202FE54100D62D96 /* Marvel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Marvel.jpg; sourceTree = "<group>"; };
+		3447DC46202FE54100D62D96 /* Math.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Math.png; sourceTree = "<group>"; };
+		3447DC47202FE54100D62D96 /* Science.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Science.jpg; sourceTree = "<group>"; };
+		3447DC4B202FE5CD00D62D96 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +107,14 @@
 		3447DC14202FE12100D62D96 /* iQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				3447DC43202FE22E00D62D96 /* AppData.swift */,
 				3447DC15202FE12100D62D96 /* AppDelegate.swift */,
 				3447DC17202FE12100D62D96 /* ViewController.swift */,
 				3447DC19202FE12100D62D96 /* Main.storyboard */,
+				3447DC4B202FE5CD00D62D96 /* CustomTableViewCell.swift */,
+				3447DC45202FE54100D62D96 /* Marvel.jpg */,
+				3447DC46202FE54100D62D96 /* Math.png */,
+				3447DC47202FE54100D62D96 /* Science.jpg */,
 				3447DC1C202FE12100D62D96 /* Assets.xcassets */,
 				3447DC1E202FE12100D62D96 /* LaunchScreen.storyboard */,
 				3447DC21202FE12100D62D96 /* Info.plist */,
@@ -232,8 +247,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3447DC48202FE54200D62D96 /* Marvel.jpg in Resources */,
 				3447DC20202FE12100D62D96 /* LaunchScreen.storyboard in Resources */,
+				3447DC49202FE54200D62D96 /* Math.png in Resources */,
 				3447DC1D202FE12100D62D96 /* Assets.xcassets in Resources */,
+				3447DC4A202FE54200D62D96 /* Science.jpg in Resources */,
 				3447DC1B202FE12100D62D96 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +279,8 @@
 			files = (
 				3447DC18202FE12100D62D96 /* ViewController.swift in Sources */,
 				3447DC16202FE12100D62D96 /* AppDelegate.swift in Sources */,
+				3447DC4C202FE5CD00D62D96 /* CustomTableViewCell.swift in Sources */,
+				3447DC44202FE22E00D62D96 /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
