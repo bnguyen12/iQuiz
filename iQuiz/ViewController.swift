@@ -22,13 +22,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   }
   
   public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+      as! CustomTableViewCell
     cell.myImage.image = UIImage(named: appdata.getSubjects()[indexPath.row])
     cell.myLbl.text = appdata.getSubjects()[indexPath.row]
     cell.myDescrip.text = appdata.getDescrip()[indexPath.row]
     return cell
   }
-/*
+  
+  @IBAction func settingAlert(_ sender: Any) {
+    let alert = UIAlertController(title: "Settings", message: "Settings go here",
+                                  preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,
+                                  handler: { (action) in alert.dismiss(animated: true, completion: nil)
+    }))
+    self.present(alert, animated: true, completion: nil)
+  }
+  /*
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
