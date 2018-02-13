@@ -50,6 +50,7 @@ class AppData : NSObject{
     return descrip
   }
   
+  //Has subjects that point to questions of that subject
   func getQs() -> [String: [String]] {
     var dict = [String: [String]]()
     for i in 0...getSubjects().count - 1 {
@@ -57,18 +58,28 @@ class AppData : NSObject{
     }
     return dict
   }
-  
+   //assign possible answers to each question
   func getAs() -> [String: [String]] {
+    var ansCounter = 0
     var dict = [String: [String]]()
     for i in 0...questions.count - 1 {
       for j in 0...questions[i].count - 1 {
-        dict[questions[i][j]] = answers[j]
+        dict[questions[i][j]] = answers[ansCounter]
+        ansCounter = ansCounter + 1
       }
     }
     return dict
   }
   
-  func getRealAs() -> [String] {
-    return realAns
+  func getRealAs() -> [String: String] {
+    var dict = [String: String]()
+    var counter = 0
+    for i in 0...questions.count - 1 {
+      for j in 0...questions[i].count - 1 {
+        dict[questions[i][j]] = realAns[counter]
+        counter = counter + 1
+      }
+    }
+    return dict
   }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		341C02AC20337650002C3F9C /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341C02AB20337650002C3F9C /* AnswerViewController.swift */; };
 		3447DC16202FE12100D62D96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC15202FE12100D62D96 /* AppDelegate.swift */; };
 		3447DC18202FE12100D62D96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC17202FE12100D62D96 /* ViewController.swift */; };
 		3447DC1B202FE12100D62D96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3447DC19202FE12100D62D96 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 		3447DC36202FE12100D62D96 /* iQuizUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC35202FE12100D62D96 /* iQuizUITests.swift */; };
 		3447DC44202FE22E00D62D96 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC43202FE22E00D62D96 /* AppData.swift */; };
 		3447DC4C202FE5CD00D62D96 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC4B202FE5CD00D62D96 /* CustomTableViewCell.swift */; };
+		3467C0B22032C4B000CE9E39 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3467C0B12032C4B000CE9E39 /* QuestionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		341C02AB20337650002C3F9C /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		3447DC12202FE12100D62D96 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3447DC15202FE12100D62D96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = iQuiz/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		3447DC17202FE12100D62D96 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = iQuiz/ViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -51,6 +54,7 @@
 		3447DC37202FE12100D62D96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3447DC43202FE22E00D62D96 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppData.swift; path = iQuiz/AppData.swift; sourceTree = SOURCE_ROOT; };
 		3447DC4B202FE5CD00D62D96 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = iQuiz/CustomTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		3467C0B12032C4B000CE9E39 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +108,10 @@
 				3447DC43202FE22E00D62D96 /* AppData.swift */,
 				3447DC15202FE12100D62D96 /* AppDelegate.swift */,
 				3447DC17202FE12100D62D96 /* ViewController.swift */,
-				3447DC19202FE12100D62D96 /* Main.storyboard */,
+				341C02AB20337650002C3F9C /* AnswerViewController.swift */,
+				3467C0B12032C4B000CE9E39 /* QuestionViewController.swift */,
 				3447DC4B202FE5CD00D62D96 /* CustomTableViewCell.swift */,
+				3447DC19202FE12100D62D96 /* Main.storyboard */,
 				3447DC1C202FE12100D62D96 /* Assets.xcassets */,
 				3447DC1E202FE12100D62D96 /* LaunchScreen.storyboard */,
 				3447DC21202FE12100D62D96 /* Info.plist */,
@@ -265,7 +271,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				341C02AC20337650002C3F9C /* AnswerViewController.swift in Sources */,
 				3447DC18202FE12100D62D96 /* ViewController.swift in Sources */,
+				3467C0B22032C4B000CE9E39 /* QuestionViewController.swift in Sources */,
 				3447DC16202FE12100D62D96 /* AppDelegate.swift in Sources */,
 				3447DC4C202FE5CD00D62D96 /* CustomTableViewCell.swift in Sources */,
 				3447DC44202FE22E00D62D96 /* AppData.swift in Sources */,

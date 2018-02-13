@@ -12,6 +12,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
   var appdata = AppData.shared
   @IBOutlet weak var myTable: UITableView!
+  var currentSubject = ""
+  var questionIndex = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -31,6 +33,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     return cell
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    currentSubject = appdata.getSubjects()[indexPath.row]
+    performSegue(withIdentifier: "segue", sender: self)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      let questionController = segue.destination as! QuestionViewController
+      questionController.currentSubject = self.currentSubject
+      questionController.questionIndex = self.questionIndex
+  }
+  
+  //Make popup for alerts
   @IBAction func settingAlert(_ sender: Any) {
     let alert = UIAlertController(title: "Settings", message: "Settings go here",
                                   preferredStyle: UIAlertControllerStyle.alert)
@@ -39,12 +53,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }))
     self.present(alert, animated: true, completion: nil)
   }
-  /*
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-*/
-  
 }
 
