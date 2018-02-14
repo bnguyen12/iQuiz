@@ -103,7 +103,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nrG-7M-oov">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="FVI-LE-hQm" style="IBUITableViewCellStyleDefault" id="fRR-CL-fLx" customClass="CustomTableViewCell" customModule="iQuiz" customModuleProvider="target">
@@ -132,15 +132,8 @@
                                     <outlet property="delegate" destination="NKD-wF-81c" id="F7H-1H-L2i"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9d-Kq-mRB">
-                                <rect key="frame" x="0.0" y="20" width="129" height="30"/>
-                                <state key="normal" title="back"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="backToSubjects" id="9LV-Vj-O3q"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQI-fY-GbT">
-                                <rect key="frame" x="246" y="20" width="129" height="30"/>
+                                <rect key="frame" x="313" y="622" width="47" height="30"/>
                                 <state key="normal" title="submit"/>
                                 <connections>
                                     <segue destination="Bjo-b0-Ef2" kind="show" identifier="toAnsScene" id="hdg-rh-K3M"/>
@@ -152,20 +145,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9d-Kq-mRB">
+                                <rect key="frame" x="16" y="622" width="34" height="30"/>
+                                <state key="normal" title="back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="backToSubjects" id="9LV-Vj-O3q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nrG-7M-oov" firstAttribute="bottom" secondItem="x06-wi-fgt" secondAttribute="bottom" id="8x8-Cj-PZu"/>
                             <constraint firstItem="nrG-7M-oov" firstAttribute="top" secondItem="Ufl-1x-b3i" secondAttribute="bottom" constant="8" id="9Qu-xD-BIM"/>
+                            <constraint firstItem="p9d-Kq-mRB" firstAttribute="leading" secondItem="x06-wi-fgt" secondAttribute="leading" constant="16" id="B11-p8-5LD"/>
                             <constraint firstItem="nrG-7M-oov" firstAttribute="trailing" secondItem="x06-wi-fgt" secondAttribute="trailing" id="BNo-HA-wqU"/>
-                            <constraint firstItem="p9d-Kq-mRB" firstAttribute="leading" secondItem="x06-wi-fgt" secondAttribute="leading" id="DZe-L1-Ulc"/>
                             <constraint firstItem="Ufl-1x-b3i" firstAttribute="centerX" secondItem="Cdw-dN-Isi" secondAttribute="centerX" id="Dm5-Xt-699"/>
-                            <constraint firstItem="x06-wi-fgt" firstAttribute="trailing" secondItem="zQI-fY-GbT" secondAttribute="trailing" id="OsU-Va-F23"/>
-                            <constraint firstItem="zQI-fY-GbT" firstAttribute="leading" secondItem="Ufl-1x-b3i" secondAttribute="trailing" id="hOr-fe-3Lc"/>
-                            <constraint firstItem="p9d-Kq-mRB" firstAttribute="top" secondItem="x06-wi-fgt" secondAttribute="top" id="hyk-h6-hko"/>
-                            <constraint firstItem="Ufl-1x-b3i" firstAttribute="leading" secondItem="p9d-Kq-mRB" secondAttribute="trailing" id="mPb-Pp-LmG"/>
+                            <constraint firstItem="p9d-Kq-mRB" firstAttribute="top" secondItem="nrG-7M-oov" secondAttribute="bottom" id="I59-z7-F0L"/>
+                            <constraint firstItem="x06-wi-fgt" firstAttribute="trailing" secondItem="zQI-fY-GbT" secondAttribute="trailing" constant="15" id="WZq-wP-dKW"/>
+                            <constraint firstItem="x06-wi-fgt" firstAttribute="bottom" secondItem="zQI-fY-GbT" secondAttribute="bottom" constant="15" id="ZCG-nt-FN5"/>
+                            <constraint firstItem="x06-wi-fgt" firstAttribute="bottom" secondItem="p9d-Kq-mRB" secondAttribute="bottom" constant="15" id="k8z-nc-cLt"/>
                             <constraint firstItem="nrG-7M-oov" firstAttribute="leading" secondItem="x06-wi-fgt" secondAttribute="leading" id="nvU-ps-iYL"/>
-                            <constraint firstItem="zQI-fY-GbT" firstAttribute="top" secondItem="x06-wi-fgt" secondAttribute="top" id="pPc-OI-tAL"/>
                             <constraint firstItem="Ufl-1x-b3i" firstAttribute="top" secondItem="x06-wi-fgt" secondAttribute="top" id="ykd-U5-dRo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x06-wi-fgt"/>
