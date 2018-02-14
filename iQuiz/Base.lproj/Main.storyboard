@@ -204,7 +204,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obn-Mo-S9G">
-                                <rect key="frame" x="164" y="380" width="47" height="42"/>
+                                <rect key="frame" x="164" y="380" width="47" height="287"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="next"/>
                                 <connections>
@@ -229,6 +229,7 @@
                             <constraint firstItem="vci-AQ-qXy" firstAttribute="centerX" secondItem="yiB-Ah-jvM" secondAttribute="centerX" id="qwq-pP-m1s"/>
                             <constraint firstItem="zSx-Tw-8OT" firstAttribute="centerX" secondItem="yiB-Ah-jvM" secondAttribute="centerX" id="tdE-GO-xJU"/>
                             <constraint firstItem="Obn-Mo-S9G" firstAttribute="top" secondItem="WKL-bg-Qqk" secondAttribute="bottom" constant="104.5" id="usZ-pW-dod"/>
+                            <constraint firstItem="lBQ-VU-Tm5" firstAttribute="bottom" secondItem="Obn-Mo-S9G" secondAttribute="bottom" id="vWC-1t-45L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lBQ-VU-Tm5"/>
                     </view>
@@ -304,7 +305,7 @@
         <image name="Marvel Super Heroes" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZpP-GO-y4q"/>
+        <segue reference="qtL-Xn-e88"/>
         <segue reference="K3V-Xy-X1y"/>
     </inferredMetricsTieBreakers>
 </document>
