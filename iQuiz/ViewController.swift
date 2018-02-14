@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   @IBOutlet weak var myTable: UITableView!
   var currentSubject = ""
   var questionIndex = 0
+  var totalQuestions = 1
+  var answeredCorrect = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,9 +41,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      let questionController = segue.destination as! QuestionViewController
-      questionController.currentSubject = self.currentSubject
-      questionController.questionIndex = self.questionIndex
+    let questionController = segue.destination as! QuestionViewController
+    questionController.currentSubject = self.currentSubject
+    questionController.questionIndex = self.questionIndex
+    questionController.answeredCorrect = self.answeredCorrect
+    questionController.totalQuestions = self.totalQuestions
   }
   
   //Make popup for alerts

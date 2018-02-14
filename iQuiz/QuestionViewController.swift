@@ -18,6 +18,8 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
   var currAnswer : String?
   var currQuestion : String?
   var questionIndex : Int?
+  var totalQuestions : Int?
+  var answeredCorrect : Int?
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 4
@@ -41,6 +43,8 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
       ansController.currAnswer = self.currAnswer
       ansController.correctAnswer = correctAnswer
       ansController.currentSubject = self.currentSubject
+      ansController.totalQuestions = self.totalQuestions
+      ansController.answeredCorrect = self.answeredCorrect
     }
   }
   

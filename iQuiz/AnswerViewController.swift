@@ -14,6 +14,8 @@ class AnswerViewController: UIViewController {
   var currAnswer : String?
   var correctAnswer : String?
   var currentSubject : String?
+  var totalQuestions : Int?
+  var answeredCorrect : Int?
   @IBOutlet weak var answerLabel: UILabel!
   @IBOutlet weak var questionLabel: UILabel!
   @IBOutlet weak var validityLabel: UILabel!
@@ -26,6 +28,14 @@ class AnswerViewController: UIViewController {
       validityLabel.text = "False!"
     } else {
       validityLabel.text = "Correct!"
+      answeredCorrect = answeredCorrect! + 1
+    }
+  }
+  @IBAction func chooseNextScene(_ sender: Any) {
+    if self.questionIndex! + 1 < (appdata.getQs()[currentSubject!]?.count)! {
+      performSegue(withIdentifier: "nextQuestion", sender: self)
+    } else {
+      performSegue(withIdentifier: "showResults", sender: self)
     }
   }
   
@@ -34,6 +44,12 @@ class AnswerViewController: UIViewController {
       let questionController = segue.destination as! QuestionViewController
       questionController.questionIndex = self.questionIndex! + 1
       questionController.currentSubject = self.currentSubject
+      questionController.totalQuestions = self.totalQuestions! + 1
+      questionController.answeredCorrect = self.answeredCorrect
+    } else {
+      let resultsController = segue.destination as! ResultsViewController
+      resultsController.answeredCorrect = self.answeredCorrect
+      resultsController.totalQuestions = self.totalQuestions
     }
   }
 }
