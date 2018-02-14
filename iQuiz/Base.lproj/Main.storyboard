@@ -255,7 +255,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drg-PT-dnf">
                                 <rect key="frame" x="0.0" y="610" width="375" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="back"/>
+                                <state key="normal" title="next"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="K3V-Xy-X1y"/>
                                 </connections>
@@ -304,8 +304,7 @@
         <image name="Marvel Super Heroes" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hdg-rh-K3M"/>
         <segue reference="ZpP-GO-y4q"/>
-        <segue reference="9LV-Vj-O3q"/>
+        <segue reference="K3V-Xy-X1y"/>
     </inferredMetricsTieBreakers>
 </document>
