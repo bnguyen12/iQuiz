@@ -14,12 +14,14 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
   @IBOutlet weak var question: UILabel!
   @IBOutlet weak var questionTable: UITableView!
   var appdata = AppData.shared
+  /*
   var currentSubject : String?
   var currAnswer : String?
   var currQuestion : String?
   var questionIndex : Int?
   var totalQuestions : Int?
   var answeredCorrect : Int?
+  */
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 4
@@ -27,30 +29,32 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-    cell.answerLabel.text = appdata.getAs()[appdata.getQs()[currentSubject!]![questionIndex!]]?[indexPath.row]
+    //cell.answerLabel.text = appdata.getAs()[appdata.getQs()[currentSubject!]![questionIndex!]]?[indexPath.row]
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    currAnswer = appdata.getAs()[appdata.getQs()[currentSubject!]![questionIndex!]]?[indexPath.row]
+    //currAnswer = appdata.getAs()[appdata.getQs()[currentSubject!]![questionIndex!]]?[indexPath.row]
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if (segue.identifier == "toAnsScene") {
       let ansController = segue.destination as! AnswerViewController
       let correctAnswer = appdata.getRealAs()[question.text!]
+      /*
       ansController.questionIndex = self.questionIndex
       ansController.currAnswer = self.currAnswer
       ansController.correctAnswer = correctAnswer
       ansController.currentSubject = self.currentSubject
       ansController.totalQuestions = self.totalQuestions
       ansController.answeredCorrect = self.answeredCorrect
+      */
     }
   }
   
   override func viewDidLoad() {
       super.viewDidLoad()
-      question.text = appdata.getQs()[currentSubject!]?[questionIndex!]
+      //question.text = appdata.getQs()[currentSubject!]?[questionIndex!]
       questionTable.tableFooterView = UIView()
     }
 }
