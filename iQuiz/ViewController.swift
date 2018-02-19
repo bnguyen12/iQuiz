@@ -85,15 +85,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   func readJSON(_ url : String) -> Void {
     let jsonURL = URL(string: url)
     let task = URLSession.shared.dataTask(with: jsonURL!) { data, response, error in
-      do {
-        let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
-        self.writeJSON(data!)
-        self.jsonData = jsonResult as! [[String: Any]]
-      } catch {
-        print(error)
-      }
-      DispatchQueue.main.async() {
-        self.myTable.reloadData()
+      if error != nil {
+        print("Download failed")
+      } else {
+        do {
+          if let content = data {
+            let jsonResult = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers)
+            self.writeJSON(content)
+            self.jsonData = jsonResult as! [[String: Any]]
+          }
+        } catch {
+          print(error)
+        }
+        DispatchQueue.main.async() {
+          self.myTable.reloadData()
+        }
       }
     }
     task.resume()

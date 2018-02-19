@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		340E6D68203A85F100E20113 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 340E6D67203A85F100E20113 /* Settings.bundle */; };
 		341C02AC20337650002C3F9C /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341C02AB20337650002C3F9C /* AnswerViewController.swift */; };
 		3447DC16202FE12100D62D96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC15202FE12100D62D96 /* AppDelegate.swift */; };
 		3447DC18202FE12100D62D96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447DC17202FE12100D62D96 /* ViewController.swift */; };
@@ -38,7 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		341C02AB20337650002C3F9C /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
+		340E6D67203A85F100E20113 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = iQuiz/Settings.bundle; sourceTree = SOURCE_ROOT; };
+		341C02AB20337650002C3F9C /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnswerViewController.swift; path = iQuiz/AnswerViewController.swift; sourceTree = SOURCE_ROOT; };
 		3447DC12202FE12100D62D96 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3447DC15202FE12100D62D96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = iQuiz/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		3447DC17202FE12100D62D96 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = iQuiz/ViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -53,8 +55,8 @@
 		3447DC35202FE12100D62D96 /* iQuizUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iQuizUITests.swift; sourceTree = "<group>"; };
 		3447DC37202FE12100D62D96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3447DC4B202FE5CD00D62D96 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = iQuiz/CustomTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		3467C0B12032C4B000CE9E39 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
-		34BE99572033F3A600386974 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		3467C0B12032C4B000CE9E39 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionViewController.swift; path = iQuiz/QuestionViewController.swift; sourceTree = SOURCE_ROOT; };
+		34BE99572033F3A600386974 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = iQuiz/ResultsViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				3447DC19202FE12100D62D96 /* Main.storyboard */,
 				3447DC1C202FE12100D62D96 /* Assets.xcassets */,
 				3447DC1E202FE12100D62D96 /* LaunchScreen.storyboard */,
+				340E6D67203A85F100E20113 /* Settings.bundle */,
 				3447DC21202FE12100D62D96 /* Info.plist */,
 			);
 			path = iQuiz;
@@ -244,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				340E6D68203A85F100E20113 /* Settings.bundle in Resources */,
 				3447DC20202FE12100D62D96 /* LaunchScreen.storyboard in Resources */,
 				3447DC1D202FE12100D62D96 /* Assets.xcassets in Resources */,
 				3447DC1B202FE12100D62D96 /* Main.storyboard in Resources */,
