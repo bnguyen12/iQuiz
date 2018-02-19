@@ -59,7 +59,7 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
   }
   
   override func viewDidLoad() {
-      super.viewDidLoad()
+    super.viewDidLoad()
     questions = (jsonData![currentSubject!]["questions"]! as! [[String: Any]])
     question.text = (questions![questionIndex!]["text"] as! String)
       questionTable.tableFooterView = UIView()

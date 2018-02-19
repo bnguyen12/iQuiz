@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   var questionIndex = 0
   var totalQuestions = 1
   var answeredCorrect = 0
+  var refreshControl : UIRefreshControl!
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -25,6 +26,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   override func viewDidLoad() {
     super.viewDidLoad()
     myTable.tableFooterView = UIView()
+    refreshControl = UIRefreshControl()
+    refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+    refreshControl.addTarget(self, action: #selector(refresh(_:)), for: UIControlEvents.valueChanged)
+    myTable.refreshControl = refreshControl
+    
     //If there is a local file, use it for this quiz
     let fm = FileManager.default
     let docsurl = try! fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -35,6 +41,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       let jsonResult = try! JSONSerialization.jsonObject(with: fileData! as Data, options: JSONSerialization.ReadingOptions.mutableContainers)
       jsonData = jsonResult as! [[String: Any]]
     }
+  }
+  
+  @objc func refresh(_ sender: AnyObject) {
+    myTable.reloadData()
+    self.refreshControl.endRefreshing()
   }
   
   public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
