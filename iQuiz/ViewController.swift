@@ -16,13 +16,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   var questionIndex = 0
   var totalQuestions = 1
   var answeredCorrect = 0
-
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    checkNetwork()
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     myTable.tableFooterView = UIView()
-    let fm = FileManager.default
-    
     //If there is a local file, use it for this quiz
+    let fm = FileManager.default
     let docsurl = try! fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
     let jsonPath = docsurl.appendingPathComponent("jsonData.json")
     if fm.fileExists(atPath: jsonPath.path) {
@@ -67,6 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   
   //Popup to get JSON data from URL
   @IBAction func settingAlert(_ sender: Any) {
+    checkNetwork()
     var url = String()
     let alert = UIAlertController(title: "Retrieve JSON", message: "Type in a valid URL",
                                   preferredStyle: .alert)
@@ -86,7 +91,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let jsonURL = URL(string: url)
     let task = URLSession.shared.dataTask(with: jsonURL!) { data, response, error in
       if error != nil {
-        print("Download failed")
+        NSLog("Download failed")
       } else {
         do {
           if let content = data {
@@ -132,6 +137,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       print("JSON data was written to the file successfully!")
     } catch let error as NSError {
       print("Couldn't write to file: \(error.localizedDescription)")
+    }
+  }
+  
+  //Give a notification if no wifi or cellular connection is available
+  func checkNetwork() -> Void {
+    if !Reachability.isConnectedToNetwork() {
+      let alert = UIAlertController(title: "Connectivity", message: "No network connection available",
+                                    preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+        alert.dismiss(animated: true, completion: nil)
+      }))
+      self.present(alert, animated: true, completion: nil)
     }
   }
 }
