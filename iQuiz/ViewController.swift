@@ -20,6 +20,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   override func viewDidLoad() {
     super.viewDidLoad()
     myTable.tableFooterView = UIView()
+    let fm = FileManager.default
+    
+    //If there is a local file, use it for this quiz
+    let docsurl = try! fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+    let jsonPath = docsurl.appendingPathComponent("jsonData.json")
+    if fm.fileExists(atPath: jsonPath.path) {
+      print("File found!")
+      let fileData = NSData.init(contentsOf: jsonPath)
+      let jsonResult = try! JSONSerialization.jsonObject(with: fileData! as Data, options: JSONSerialization.ReadingOptions.mutableContainers)
+      jsonData = jsonResult as! [[String: Any]]
+    }
   }
   
   public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,8 +86,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let jsonURL = URL(string: url)
     let task = URLSession.shared.dataTask(with: jsonURL!) { data, response, error in
       do {
-        let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! [[String: Any]]
-        self.jsonData = jsonResult
+        let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
+        self.writeJSON(data!)
+        self.jsonData = jsonResult as! [[String: Any]]
       } catch {
         print(error)
       }
@@ -85,6 +97,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       }
     }
     task.resume()
+  }
+  
+  //Writes json from rawJson into a file named jsonData.json in the documents directory
+  func writeJSON(_ rawJson : Any) -> Void {
+    let documentsDirectoryPathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+    let documentsDirectoryPath = NSURL(string: documentsDirectoryPathString)!
+    let jsonFilePath = documentsDirectoryPath.appendingPathComponent("jsonData.json")
+    let fileManager = FileManager.default
+    var isDirectory: ObjCBool = false
+    
+    // creating a .json file in the Documents folder
+    if !fileManager.fileExists(atPath: (jsonFilePath?.path)!, isDirectory: &isDirectory) {
+      let created = fileManager.createFile(atPath: (jsonFilePath?.path)!, contents: nil, attributes: nil)
+      if created {
+        print("File created ")
+      } else {
+        print("Couldn't create file for some reason")
+      }
+    } else {
+      print("File already exists")
+    }
+    
+    //Write raw json file to directory
+    do {
+      let file = try FileHandle(forWritingTo: jsonFilePath!)
+      file.write(rawJson as! Data)
+      print("JSON data was written to the file successfully!")
+    } catch let error as NSError {
+      print("Couldn't write to file: \(error.localizedDescription)")
+    }
   }
 }
 
