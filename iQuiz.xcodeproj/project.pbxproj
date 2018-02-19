@@ -41,7 +41,7 @@
 
 /* Begin PBXFileReference section */
 		340E6D67203A85F100E20113 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = iQuiz/Settings.bundle; sourceTree = SOURCE_ROOT; };
-		340E6D69203A8B1B00E20113 /* connectivityCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = connectivityCheck.swift; sourceTree = "<group>"; };
+		340E6D69203A8B1B00E20113 /* connectivityCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = connectivityCheck.swift; path = iQuiz/connectivityCheck.swift; sourceTree = SOURCE_ROOT; };
 		341C02AB20337650002C3F9C /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnswerViewController.swift; path = iQuiz/AnswerViewController.swift; sourceTree = SOURCE_ROOT; };
 		3447DC12202FE12100D62D96 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3447DC15202FE12100D62D96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = iQuiz/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
