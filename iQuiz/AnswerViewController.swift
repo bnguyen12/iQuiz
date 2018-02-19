@@ -34,6 +34,7 @@ class AnswerViewController: UIViewController {
     }
   }
   
+  //Either show the next question or show results
   @IBAction func chooseNextScene(_ sender: Any) {
     if self.questionIndex! + 1 < (questions?.count)! {
       performSegue(withIdentifier: "nextQuestion", sender: self)
@@ -42,6 +43,7 @@ class AnswerViewController: UIViewController {
     }
   }
   
+  //Send variables through next segue
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if (segue.identifier == "nextQuestion") {
       let questionController = segue.destination as! QuestionViewController

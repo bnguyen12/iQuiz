@@ -27,6 +27,7 @@ class ResultsViewController: UIViewController {
     howManyCorrectLabel.text = "You got \(answeredCorrect!) of \(totalQuestions!) correct"
   }
   
+  //Send quiz and answer data back to main page
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let mainPage = segue.destination as! ViewController
     mainPage.jsonData = self.jsonData!

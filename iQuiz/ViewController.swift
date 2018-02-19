@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   var totalQuestions = 1
   var answeredCorrect = 0
   var refreshControl : UIRefreshControl!
+  var networkConnected : Bool!
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -26,6 +27,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   override func viewDidLoad() {
     super.viewDidLoad()
     myTable.tableFooterView = UIView()
+    
+    //Implement pull to refresh
     refreshControl = UIRefreshControl()
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refreshControl.addTarget(self, action: #selector(refresh(_:)), for: UIControlEvents.valueChanged)
@@ -36,13 +39,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let docsurl = try! fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
     let jsonPath = docsurl.appendingPathComponent("jsonData.json")
     if fm.fileExists(atPath: jsonPath.path) {
-      print("File found!")
+      NSLog("File found!")
       let fileData = NSData.init(contentsOf: jsonPath)
       let jsonResult = try! JSONSerialization.jsonObject(with: fileData! as Data, options: JSONSerialization.ReadingOptions.mutableContainers)
       jsonData = jsonResult as! [[String: Any]]
     }
   }
   
+  //Reload table if user pulls to refresh
   @objc func refresh(_ sender: AnyObject) {
     myTable.reloadData()
     self.refreshControl.endRefreshing()
@@ -71,6 +75,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     performSegue(withIdentifier: "segue", sender: self)
   }
   
+  //Send all necessary variables to next segue
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let questionController = segue.destination as! QuestionViewController
     questionController.jsonData = self.jsonData
@@ -82,7 +87,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   
   //Popup to get JSON data from URL
   @IBAction func settingAlert(_ sender: Any) {
-    checkNetwork()
     var url = String()
     let alert = UIAlertController(title: "Retrieve JSON", message: "Type in a valid URL",
                                   preferredStyle: .alert)
@@ -100,25 +104,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   //Read JSON file for quiz and answers
   func readJSON(_ url : String) -> Void {
     let jsonURL = URL(string: url)
-    let task = URLSession.shared.dataTask(with: jsonURL!) { data, response, error in
-      if error != nil {
-        NSLog("Download failed")
-      } else {
-        do {
-          if let content = data {
-            let jsonResult = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers)
-            self.writeJSON(content)
-            self.jsonData = jsonResult as! [[String: Any]]
+    if checkNetwork() {
+      let task = URLSession.shared.dataTask(with: jsonURL!) { data, response, error in
+        if error != nil {
+          self.makeAlert("Download Status", "Failed")
+        } else {
+          do {
+            if let content = data {
+              let jsonResult = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers)
+              self.writeJSON(content)
+              self.jsonData = jsonResult as! [[String: Any]]
+            }
+          } catch {
+            print(error)
           }
-        } catch {
-          print(error)
-        }
-        DispatchQueue.main.async() {
-          self.myTable.reloadData()
+          DispatchQueue.main.async() {
+            self.myTable.reloadData()
+          }
         }
       }
+      task.resume()
     }
-    task.resume()
   }
   
   //Writes json from rawJson into a file named jsonData.json in the documents directory
@@ -141,7 +147,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       print("File already exists")
     }
     
-    //Write raw json file to directory
+    //Write json data to json file in /Documents
     do {
       let file = try FileHandle(forWritingTo: jsonFilePath!)
       file.write(rawJson as! Data)
@@ -152,15 +158,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   }
   
   //Give a notification if no wifi or cellular connection is available
-  func checkNetwork() -> Void {
-    if !Reachability.isConnectedToNetwork() {
-      let alert = UIAlertController(title: "Connectivity", message: "No network connection available",
-                                    preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-        alert.dismiss(animated: true, completion: nil)
-      }))
-      self.present(alert, animated: true, completion: nil)
+  func checkNetwork() -> Bool {
+    let userDefaults = UserDefaults.standard
+    userDefaults.synchronize()
+    networkConnected = userDefaults.bool(forKey: "networkPreference")
+    if !Reachability.isConnectedToNetwork() || !networkConnected {
+      makeAlert("Connectivity", "No network connection available")
     }
+    return Reachability.isConnectedToNetwork()
+  }
+  
+  //Creates a popup alert using ti for title and mes for message
+  func makeAlert(_ ti: String, _ mes: String) -> Void {
+    let alert = UIAlertController(title: ti, message: mes,
+                                  preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+      alert.dismiss(animated: true, completion: nil)
+    }))
+    self.present(alert, animated: true, completion: nil)
   }
 }
 

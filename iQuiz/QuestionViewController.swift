@@ -40,7 +40,8 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     currAnswer = indexPath.row
   }
-
+  
+  //Send variables through segue
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if (segue.identifier == "toAnsScene") {
       let ansController = segue.destination as! AnswerViewController
