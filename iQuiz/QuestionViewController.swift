@@ -13,48 +13,55 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
 
   @IBOutlet weak var question: UILabel!
   @IBOutlet weak var questionTable: UITableView!
-  var appdata = AppData.shared
-  /*
-  var currentSubject : String?
-  var currAnswer : String?
-  var currQuestion : String?
+  var jsonData : [[String: Any]]?
+  var currentSubject : Int?
+  var questions : [[String: Any]]?
+  var answers : [String]?
   var questionIndex : Int?
   var totalQuestions : Int?
   var answeredCorrect : Int?
-  */
+  var currAnswer : Int?
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 4
+    if questions == nil {
+      questionTable.reloadData()
+    } else {
+      answers = questions![questionIndex!]["answers"] as! [String]?
+    }
+    return answers!.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-    //cell.answerLabel.text = appdata.getAs()[appdata.getQs()[currentSubject!]![questionIndex!]]?[indexPath.row]
+    cell.answerLabel.text = answers?[indexPath.row]
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //currAnswer = appdata.getAs()[appdata.getQs()[currentSubject!]![questionIndex!]]?[indexPath.row]
+    currAnswer = indexPath.row
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if (segue.identifier == "toAnsScene") {
       let ansController = segue.destination as! AnswerViewController
-      let correctAnswer = appdata.getRealAs()[question.text!]
-      /*
+      ansController.questions = self.questions
+      ansController.answers = self.answers
       ansController.questionIndex = self.questionIndex
       ansController.currAnswer = self.currAnswer
-      ansController.correctAnswer = correctAnswer
       ansController.currentSubject = self.currentSubject
       ansController.totalQuestions = self.totalQuestions
       ansController.answeredCorrect = self.answeredCorrect
-      */
+      ansController.jsonData = self.jsonData
+    } else {
+      let mainPage = segue.destination as! ViewController
+      mainPage.jsonData = self.jsonData!
     }
   }
   
   override func viewDidLoad() {
       super.viewDidLoad()
-      //question.text = appdata.getQs()[currentSubject!]?[questionIndex!]
+    questions = (jsonData![currentSubject!]["questions"]! as! [[String: Any]])
+    question.text = (questions![questionIndex!]["text"] as! String)
       questionTable.tableFooterView = UIView()
     }
 }

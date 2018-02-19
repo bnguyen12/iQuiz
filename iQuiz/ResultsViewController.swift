@@ -12,13 +12,11 @@ class ResultsViewController: UIViewController {
   
   @IBOutlet weak var howManyCorrectLabel: UILabel!
   @IBOutlet weak var overallResultLabel: UILabel!
-  /*
   var totalQuestions : Int?
   var answeredCorrect : Int?
-  */
+  var jsonData : [[String: Any]]?
   override func viewDidLoad() {
     super.viewDidLoad()
-    /*
     if (answeredCorrect! / totalQuestions!) == 1 {
       overallResultLabel.text = "Perfect"
     } else if (Double(answeredCorrect!) / Double(totalQuestions!)) > 0.5 {
@@ -27,7 +25,10 @@ class ResultsViewController: UIViewController {
       overallResultLabel.text = "Not quite..."
     }
     howManyCorrectLabel.text = "You got \(answeredCorrect!) of \(totalQuestions!) correct"
-    */
   }
-
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let mainPage = segue.destination as! ViewController
+    mainPage.jsonData = self.jsonData!
+  }
 }
